@@ -53,6 +53,6 @@ class DatabaseLayer(object):
 
     @staticmethod
     def saveUserMessage(userId, message, messageType):
-        um = UserMessage(userId=userId, eventTime=datetime.now(), message=message, messageType=str(messageType))
+        um = UserMessage(userId=userId, eventTime=datetime.now(), message=message[:200], messageType=str(messageType))
         db.session.add(um)
         db.session.commit()

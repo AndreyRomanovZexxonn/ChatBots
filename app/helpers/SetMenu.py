@@ -20,6 +20,25 @@ def addGetStartedButton():
     print "Response:"
     print res.content
 
+def setGreetingMessage():
+    params  = {"access_token": os.environ["FB_PAGE_ACCESS_TOKEN"]}
+    headers = {"Content-Type": "application/json"}
+    message = {
+        "greeting":[
+        {
+            "locale":"default",
+            "text":"Hello!"
+        }]
+    }
+
+    data = json.dumps(message)
+    res = requests.delete("https://graph.facebook.com/v2.6/me/messenger_profile",
+    				params=params, headers=headers, data=data)
+
+    print "Response:"
+    print res.content
+
+
 def deleteMenu():
     params  = {"access_token": os.environ["FB_PAGE_ACCESS_TOKEN"]}
     headers = {"Content-Type": "application/json"}
@@ -32,6 +51,47 @@ def deleteMenu():
 
     print "Response:"
     print res.content
+
+def addPersistentMenu():
+    params  = {"access_token": os.environ["FB_PAGE_ACCESS_TOKEN"]}
+    headers = {"Content-Type": "application/json"}
+
+    message = {
+        "persistent_menu":[
+        {
+            "locale":"default",
+            "composer_input_disabled":True,
+            "call_to_actions": [
+            {
+                "title": "Help",
+                "type": "postback",
+                "payload": PayloadTypes.HELP
+            },
+            {
+                "title": "Weather",
+                "type": "postback",
+                "payload": PayloadTypes.WEATHER
+            },
+            {
+                "title": "Fx Rate",
+                "type": "postback",
+                "payload": PayloadTypes.EXCHANGE_RATE
+            }]
+        },
+        {
+            "locale":"default",
+            "composer_input_disabled": False
+        }
+]
+    }
+
+    data = json.dumps(message)
+    res = requests.post("https://graph.facebook.com/v2.6/me/messenger_profile",
+    				params=params, headers=headers, data=data)
+
+    print "Response:"
+    print res.content
+
 
 def addMenu():
     params  = {"access_token": os.environ["FB_PAGE_ACCESS_TOKEN"]}
@@ -67,4 +127,8 @@ def addMenu():
     print res.content
 
 if __name__ == "__main__":
+
+    #addGetStartedButton()
+    #setGreetingMessage()
+    #addPersistentMenu()
     addMenu()

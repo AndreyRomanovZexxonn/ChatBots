@@ -4,7 +4,14 @@ __author__ = 'zexxonn'
 import wikipedia as wiki
 import urllib
 
-MLWordsDictionary = set(["gradient", "boosting", "machine", "learning"])
+def loadMLWords():
+    words = set()
+    with open('MLWordsDict.txt') as f:
+        for line in f:
+            words.add(line.strip().lower())
+    return words
+
+MLWordsDictionary = loadMLWords()
 
 class WikiHandler(object):
 
@@ -14,8 +21,8 @@ class WikiHandler(object):
         wiki.set_lang(lang)
         preparedText = text.lower().strip()
         words = preparedText.split(" ")
-
-        searchQuery = " ".join([w for w in words if w in MLWordsDictionary])
+        selectedWords = [w for w in words if w in MLWordsDictionary]
+        searchQuery = " ".join(selectedWords[:4])
         if not searchQuery:
             return "Can't find relevant page."
 

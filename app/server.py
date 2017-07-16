@@ -20,7 +20,8 @@ UserHelpMessage = "Hello. This is help for current ChatBot.\n\n" \
                   "You have to provide information in format \"{0} {1}\" or \"{0}\" (for Fx Rate on today date).\n" \
                   "For example \"EURRUB\" or \"EURUSD 2017.07.03\"\n\n" \
                   "If after click on a button you provided incorrect input for ChatBot, " \
-                  "then for continuing you have to click on button again.".format(FXP.currencyFormat, FXP.timeFormatForUser)
+                  "then for continuing you have to click on button again.\n\n" \
+                  "Also you can type any requests about machine learning, and bot provide you with Wikipedia link if it will find appropriate information.".format(FXP.currencyFormat, FXP.timeFormatForUser)
 
 def locationQuickReply(recipient_id):
     return {

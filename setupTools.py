@@ -12,6 +12,7 @@ def setupVirtualEnv():
         print("RUN SETUP...")
         subprocess.call(['virtualenv', 'flask'])
 
+        subprocess.call([os.path.join('flask', bin, 'pip'), 'install', 'gunicorn'])
         subprocess.call([os.path.join('flask', bin, 'pip'), 'install', 'flask'])
         subprocess.call([os.path.join('flask', bin, 'pip'), 'install', 'sqlalchemy'])
         subprocess.call([os.path.join('flask', bin, 'pip'), 'install', 'flask-sqlalchemy'])

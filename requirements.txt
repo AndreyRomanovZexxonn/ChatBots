@@ -1,0 +1,10 @@
+Flask
+SQLAlchemy
+Flask-SQLAlchemy
+sqlalchemy-migrate
+Babel
+flup
+wikipedia
+requests
+forex-python
+yahoo-finance

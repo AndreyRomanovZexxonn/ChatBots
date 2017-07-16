@@ -3,10 +3,12 @@ __author__ = 'zexxonn'
 
 import wikipedia as wiki
 import urllib
+import os
+from config import basedir
 
 def loadMLWords():
     words = set()
-    with open('MLWordsDict.txt') as f:
+    with open(os.path.join(basedir, 'app', 'MLWordsDict.txt')) as f:
         for line in f:
             words.add(line.strip().lower())
     return words

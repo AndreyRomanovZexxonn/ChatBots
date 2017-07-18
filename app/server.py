@@ -83,6 +83,8 @@ class RequestHandler(object):
                         longitude = location["long"]
                         DatabaseLayer.saveLocation(senderId, latitude, longitude)
                         SendActions.sendWeatherInformation(senderId, latitude, longitude)
+            else:
+                SendActions.sendSimpleText(senderId, "Can\'t provide weather information. You had to provide you location coordinates.")
 
             if not (serverCurrentState == serverBaseState):
                 DatabaseLayer.updateServerState(senderId, str(serverBaseState))
